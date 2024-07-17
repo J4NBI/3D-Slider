@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Slider 3D</title>
+</head>
+<body>
+  <div id="box" class="box">
+    <div class="item">
+      <img src="./images/106050-harry-styles-harrys-house-LP-6246ba0b38268.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/134180-pink-floyd-dark-side-of-the-moon-LP-64f198fb82963.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/146488-fleetwood-mac-rumours-LP-2-65fabb934e1c2.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/49305-queen-bohemian-rhapsody-ost-LP-5bf6c3d22032b.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/1969.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/2545-arctic-monkeys-whatever-people-say-i-am-thats-what-im-not-LP-5c80e0bbc95ff.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/1765.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/35588-gorillaz-demon-days-LP-5d94f5204b689.jpg" alt="">
+    </div>
+    <div class="item">
+      <img src="./images/28411-5fe33640e0f07.jpg" alt="">
+    </div>
+  
+  </div>
+  <div class="buttons">
+    <span id="prev"></span>
+    <span id="pause" class="btn">| |</span>
+    <span id="play" class="btn hidden"> &#9654</span>
+    <span id="next"></span>
+  </div>
+  <script>
+    let prev = document.querySelector("#prev");
+    let next = document.querySelector("#next");
+    let pause = document.querySelector("#pause");
+    let play = document.querySelector("#play");
+
+    intervalPlay();
+
+    next.addEventListener("click", function() {
+      let items = document.querySelectorAll(".item");
+      document.querySelector(".box").appendChild(items[0]);
+      stopToPlay();
+      intervalStop();
+    });
+
+    prev.addEventListener("click", function() {
+      let items = document.querySelectorAll(".item");
+      document.querySelector(".box").prepend(items[items.length -1]);
+      stopToPlay();
+      intervalStop();
+    });
+
+    pause.addEventListener("click", () => {
+      stopToPlay();
+      intervalStop();
+    });
+
+    play.addEventListener("click", () => {
+      playToStop();
+      intervalPlay();
+    });
+
+    function intervalPlay(){
+          myInterval = setInterval(() => {
+          items = document.querySelectorAll(".item");
+          document.querySelector(".box").prepend(items[items.length -1])
+      }, 5000);
+    };
+
+    function intervalStop() {
+      clearInterval(myInterval);
+    };
+
+    function stopToPlay() {
+      play.classList.remove("hidden");
+      pause.classList.add("hidden");
+    }
+    
+    function playToStop() {
+      pause.classList.remove("hidden");
+      play.classList.add("hidden");
+
+    };
+        
+
+   
+
+  </script>
+</body>
+</html>
