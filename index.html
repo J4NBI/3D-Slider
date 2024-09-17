@@ -53,14 +53,14 @@
 
     next.addEventListener("click", function() {
       let items = document.querySelectorAll(".item");
-      document.querySelector(".box").appendChild(items[0]);
+       document.querySelector(".box").prepend(items[items.length -1]);
       stopToPlay();
       intervalStop();
     });
 
     prev.addEventListener("click", function() {
       let items = document.querySelectorAll(".item");
-      document.querySelector(".box").prepend(items[items.length -1]);
+      document.querySelector(".box").appendChild(items[0]);
       stopToPlay();
       intervalStop();
     });
